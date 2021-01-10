@@ -11,7 +11,15 @@ How to run
 $ docker run --rm -it -v "$(pwd):/workspace" joonas/youtube-dl:TAG_FROM_DOCKERHUB URL-TO-VIDEO
 ```
 
-Usually you'll map your host current dir (the `pwd` part) to `/workspace` inside the container.
+Usually you'll map your host current dir (the `pwd` part) to `/workspace` inside the container to
+have downloaded videos appear in your current directory.
+
+
+Why run in a container
+----------------------
+
+- Less changes to your host system
+- Decreased attack surface
 
 
 Prior art

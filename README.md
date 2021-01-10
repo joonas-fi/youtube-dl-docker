@@ -8,7 +8,11 @@ How to run
 ----------
 
 ```console
-$ docker run --rm -it -v "$(pwd):/workspace" joonas/youtube-dl:TAG_FROM_DOCKERHUB URL-TO-VIDEO
+$ docker run --rm -it \
+	-v "$(pwd):/workspace" \
+	--user "$(id -u)" \
+	joonas/youtube-dl:TAG_FROM_DOCKERHUB \
+	URL-TO-VIDEO
 ```
 
 Usually you'll map your host current dir (the `pwd` part) to `/workspace` inside the container to

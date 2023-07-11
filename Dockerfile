@@ -1,4 +1,4 @@
-FROM python:3.10.0a4-slim
+FROM python:3.11-slim
 
 WORKDIR /workspace
 

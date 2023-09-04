@@ -2,14 +2,14 @@ FROM python:3.11-slim
 
 WORKDIR /workspace
 
-ENTRYPOINT ["/opt/youtube-dl/youtube-dl"]
+ENTRYPOINT ["/usr/local/bin/yt-dlp"]
 
-RUN apt update && apt install -y git ffmpeg \
+RUN apt update && apt install -y git ffmpeg curl \
 	&& adduser --gecos '' --disabled-password user1 \
 	&& chmod 777 /opt
 
-USER user1
+RUN curl -L https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp -o /usr/local/bin/yt-dlp \
+	&& chmod +x /usr/local/bin/yt-dlp
 
-RUN cd /opt \
-	&& git clone https://github.com/ytdl-org/youtube-dl.git \
-	&& cp youtube-dl/bin/youtube-dl youtube-dl/
+# launch works test
+RUN /usr/local/bin/yt-dlp --version
